@@ -7,18 +7,20 @@
 #include "DiagonalMatrix.h"
 #include "SquareMatrix.h"
 #include "DiagonalMatrix.h"
+#include "LowerTriangularMatrix.h"
 
 using std::ifstream;
 using std::ofstream;
 using std::string;
 
-enum typeMatrix {DIAGONAL, SQUARE};
+enum typeMatrix {DIAGONAL, SQUARE, LOWERTRIANGULAR};
 
 struct AbstractSquareMatrix {
     int size;
     typeMatrix type_matrix;
     DiagonalMatrix diagonal_matrix;
     SquareMatrix square_matrix;
+    LowerTriangularMatrix lower_triangular_matrix;
 };
 
 void read_matrix_from_file(AbstractSquareMatrix *matrix, ifstream *fin);

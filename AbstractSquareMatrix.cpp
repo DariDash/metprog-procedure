@@ -11,6 +11,8 @@ string get_type_matrix(AbstractSquareMatrix *matrix) {
             return "Square";
         case typeMatrix::DIAGONAL:
             return "Diagonal";
+        case typeMatrix::LOWERTRIANGULAR:
+            return "Lower triangular";
     }
 }
 
@@ -29,6 +31,9 @@ void read_matrix_from_file(AbstractSquareMatrix *matrix, ifstream *fin) {
     } else if (type_matrix == "Diagonal") {
         matrix->type_matrix = typeMatrix::DIAGONAL;
         read_matrix_from_file(&matrix->diagonal_matrix, matrix->size, fin);
+    } else if (type_matrix == "LowerTriangular") {
+        matrix->type_matrix = typeMatrix::LOWERTRIANGULAR;
+        read_matrix_from_file(&matrix->lower_triangular_matrix, matrix->size, fin);
     }
 }
 
@@ -48,7 +53,9 @@ void write_matrix_to_file(AbstractSquareMatrix *matrix, ofstream *fout) {
         case typeMatrix::DIAGONAL:
             write_matrix_to_file(&matrix->diagonal_matrix, matrix->size, fout);
             break;
+        case typeMatrix::LOWERTRIANGULAR:
+            write_matrix_to_file(&matrix->lower_triangular_matrix, matrix->size, fout);
+            break;
     }
 
 }
-
