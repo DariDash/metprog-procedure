@@ -52,3 +52,11 @@ void write_matrix_to_file(AbstractSquareMatrix *matrix, ofstream *fout) {
 
 }
 
+int get_sum_elements_matrix(AbstractSquareMatrix *matrix) {
+    switch (matrix->type_matrix) {
+        case typeMatrix::SQUARE:
+            return get_sum_elements_matrix(&matrix->square_matrix, matrix->size);
+        case typeMatrix::DIAGONAL:
+            return get_sum_elements_matrix(&matrix->diagonal_matrix, matrix->size);
+    }
+}

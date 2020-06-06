@@ -25,5 +25,6 @@ void read_matrix_from_file(AbstractSquareMatrix *matrix, ifstream *fin);
 void write_matrix_to_file(AbstractSquareMatrix *matrix, ofstream *fout);
 string get_type_matrix(AbstractSquareMatrix *matrix);
 int get_size(AbstractSquareMatrix *matrix);
+int get_sum_elements_matrix(AbstractSquareMatrix *matrix);
 
 #endif //PROCEDURE_ABSTRACTSQUAREMATRIX_H
