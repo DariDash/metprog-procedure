@@ -16,5 +16,6 @@ MatrixList* init_matrix_list();
 void add_matrix(MatrixList *matrix_list, AbstractSquareMatrix *matrix);
 bool read_matrices_from_file(MatrixList *matrix_list, string filename);
 bool write_matrices_to_file(MatrixList *matrix_list, string filename);
+void sort_list(MatrixList *matrix_list);
 
 #endif //PROCEDURE_MATRIXLIST_H

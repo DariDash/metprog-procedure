@@ -37,15 +37,29 @@ bool read_matrices_from_file(MatrixList *matrix_list, string filename) {
         return false;
     }
 
+    bool do_sort;
     int num_matrices;
-    string type_matrix;
+    string type_matrix, sort;
     fin >> num_matrices; // Кол-во матриц
+
+    fin >> sort;
+
+    if (sort == "Sort") {
+        do_sort = true;
+    } else if (sort != "NoSort") {
+        return false;
+    }
 
     for (int i = 0; i < num_matrices; ++i) {
         AbstractSquareMatrix *square_matrix = new AbstractSquareMatrix();
         read_matrix_from_file(square_matrix, &fin);
         add_matrix(matrix_list, square_matrix);
     }
+
+    if (do_sort) {
+        sort_list(matrix_list);
+    }
+
     fin.close();
     return true;
 }
@@ -69,4 +83,14 @@ bool write_matrices_to_file(MatrixList *matrix_list, string filename) {
 
     fout.close();
     return true;
+}
+
+void sort_list(MatrixList *matrix_list) {
+    for(MatrixItem* matrix_item2 = matrix_list->first_matrix; matrix_item2; matrix_item2 = matrix_item2->next_matrix) {
+        for(MatrixItem* matrix_item1 = matrix_list->first_matrix; matrix_item1->next_matrix; matrix_item1 = matrix_item1->next_matrix) {
+            if(get_sum_elements_matrix(matrix_item1->matrix) > get_sum_elements_matrix(matrix_item1->next_matrix->matrix)) {
+                std::iter_swap(&matrix_item1->matrix, &matrix_item1->next_matrix->matrix);
+            }
+        }
+    }
 }
