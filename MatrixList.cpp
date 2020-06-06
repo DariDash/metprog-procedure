@@ -38,13 +38,18 @@ bool read_matrices_from_file(MatrixList *matrix_list, string filename) {
     }
 
     int num_matrices;
-    string type_matrix;
+    string type_matrix, filter;
     fin >> num_matrices; // Кол-во матриц
+
+    fin >> filter;
 
     for (int i = 0; i < num_matrices; ++i) {
         AbstractSquareMatrix *square_matrix = new AbstractSquareMatrix();
         read_matrix_from_file(square_matrix, &fin);
-        add_matrix(matrix_list, square_matrix);
+
+        if (filter == "All" or filter == get_struct_name(square_matrix)) {
+            add_matrix(matrix_list, square_matrix);
+        }
     }
     fin.close();
     return true;

@@ -52,3 +52,11 @@ void write_matrix_to_file(AbstractSquareMatrix *matrix, ofstream *fout) {
 
 }
 
+string get_struct_name(AbstractSquareMatrix *matrix) {
+    switch (matrix->type_matrix) {
+        case typeMatrix::SQUARE:
+            return "Square";
+        case typeMatrix::DIAGONAL:
+            return "Diagonal";
+    }
+}
