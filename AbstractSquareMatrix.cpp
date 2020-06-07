@@ -11,13 +11,9 @@ string get_type_matrix(AbstractSquareMatrix *matrix) {
             return "Square";
         case typeMatrix::DIAGONAL:
             return "Diagonal";
-        case typeMatrix::LOWERTRIANGULAR:
+        case typeMatrix::LOWER_TRIANGULAR:
             return "Lower triangular";
     }
-}
-
-int get_size(AbstractSquareMatrix *matrix) {
-    return matrix->size;
 }
 
 void read_matrix_from_file(AbstractSquareMatrix *matrix, ifstream *fin) {
@@ -45,7 +41,7 @@ void read_matrix_from_file(AbstractSquareMatrix *matrix, ifstream *fin) {
         matrix->type_matrix = typeMatrix::DIAGONAL;
         read_matrix_from_file(&matrix->diagonal_matrix, matrix->size, fin);
     } else if (type_matrix == "LowerTriangular") {
-        matrix->type_matrix = typeMatrix::LOWERTRIANGULAR;
+        matrix->type_matrix = typeMatrix::LOWER_TRIANGULAR;
         read_matrix_from_file(&matrix->lower_triangular_matrix, matrix->size, fin);
     }
 }
@@ -67,7 +63,7 @@ void write_matrix_to_file(AbstractSquareMatrix *matrix, ofstream *fout) {
         case typeMatrix::DIAGONAL:
             write_matrix_to_file(&matrix->diagonal_matrix, matrix->size, fout);
             break;
-        case typeMatrix::LOWERTRIANGULAR:
+        case typeMatrix::LOWER_TRIANGULAR:
             write_matrix_to_file(&matrix->lower_triangular_matrix, matrix->size, fout);
             break;
     }
@@ -85,5 +81,16 @@ string get_type_print(AbstractSquareMatrix *matrix) {
             return "is a one-dimensional matrix";
         default:
             return "";
+    }
+}
+
+int get_sum_elements_matrix(AbstractSquareMatrix *matrix) {
+    switch (matrix->type_matrix) {
+        case typeMatrix::SQUARE:
+            return get_sum_elements_matrix(&matrix->square_matrix, matrix->size);
+        case typeMatrix::DIAGONAL:
+            return get_sum_elements_matrix(&matrix->diagonal_matrix, matrix->size);
+        case typeMatrix::LOWER_TRIANGULAR:
+            return get_sum_elements_matrix(&matrix->lower_triangular_matrix, matrix->size);
     }
 }

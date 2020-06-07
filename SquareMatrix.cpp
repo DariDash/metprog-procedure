@@ -22,3 +22,15 @@ void write_matrix_to_file(SquareMatrix *square_matrix, int size, ofstream *fout)
         *fout << endl;
     }
 }
+
+int get_sum_elements_matrix(SquareMatrix *square_matrix, int size) {
+    int sum = 0;
+
+    for (int row = 0; row < size; ++row) {
+        for (int col = 0; col < size; ++col) {
+            sum += square_matrix->matrix[row][col];
+        }
+    }
+
+    return sum;
+}

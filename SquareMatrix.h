@@ -13,5 +13,6 @@ struct SquareMatrix {
 
 void read_matrix_from_file(SquareMatrix *square_matrix, int size, ifstream *fin);
 void write_matrix_to_file(SquareMatrix *square_matrix, int size, ofstream *fout);
+int get_sum_elements_matrix(SquareMatrix *square_matrix, int size);
 
 #endif //PROCEDURE_SQUAREMATRIX_H

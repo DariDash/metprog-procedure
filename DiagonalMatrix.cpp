@@ -25,3 +25,12 @@ void write_matrix_to_file(DiagonalMatrix *diagonal_matrix, int size, ofstream *f
     }
 }
 
+int get_sum_elements_matrix(DiagonalMatrix *diagonal_matrix, int size) {
+    int sum = 0;
+
+    for (int col = 0; col < size; ++col) {
+        sum += diagonal_matrix->matrix[col];
+    }
+
+    return sum;
+}

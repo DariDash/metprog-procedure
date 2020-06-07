@@ -30,3 +30,16 @@ void write_matrix_to_file(LowerTriangularMatrix *lower_triangular_matrix, int si
         *fout << endl;
     }
 }
+
+int get_sum_elements_matrix(LowerTriangularMatrix *lower_triangular_matrix, int size) {
+
+    int values_number = (size - 1)*size/2 + size; // Кол-во элементов которые необходимо считать
+
+    int sum = 0;
+
+    for (int col = 0; col < values_number; ++col) {
+        sum += lower_triangular_matrix->matrix[col];
+    }
+
+    return sum;
+}
