@@ -94,3 +94,14 @@ int get_sum_elements_matrix(AbstractSquareMatrix *matrix) {
             return get_sum_elements_matrix(&matrix->lower_triangular_matrix, matrix->size);
     }
 }
+
+string get_struct_name(AbstractSquareMatrix *matrix) {
+    switch (matrix->type_matrix) {
+        case typeMatrix::SQUARE:
+            return "Square";
+        case typeMatrix::DIAGONAL:
+            return "Diagonal";
+        case typeMatrix::LOWER_TRIANGULAR:
+            return "LowerTriangular";
+    }
+}

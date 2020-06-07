@@ -30,5 +30,6 @@ void write_matrix_to_file(AbstractSquareMatrix *matrix, ofstream *fout);
 string get_type_matrix(AbstractSquareMatrix *matrix);
 string get_type_print(AbstractSquareMatrix *matrix);
 int get_sum_elements_matrix(AbstractSquareMatrix *matrix);
+string get_struct_name(AbstractSquareMatrix *matrix);
 
 #endif //PROCEDURE_ABSTRACTSQUAREMATRIX_H
