@@ -38,7 +38,7 @@ bool read_matrices_from_file(MatrixList *matrix_list, string filename) {
         return false;
     }
 
-    bool do_sort;
+    bool do_sort = false;
     int num_matrices;
     string type_matrix, sort, filter;
     fin >> num_matrices; // Кол-во матриц

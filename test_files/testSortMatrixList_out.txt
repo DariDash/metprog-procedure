@@ -1,0 +1,32 @@
+Number of matrices is 4
+
+Lower triangular matrix
+The output of the matrix is a one-dimensional matrix
+Size of matrix is 2
+Matrix:
+4 0 
+2 1 
+
+Diagonal matrix
+The output of the matrix by rows
+Size of matrix is 3
+Matrix:
+1 0 0 
+0 4 0 
+0 0 7 
+
+Square matrix
+The output of the matrix by columns
+Size of matrix is 4
+Matrix:
+4 5 2 6 
+0 2 5 7 
+1 3 2 6 
+1 4 3 4 
+
+Diagonal matrix
+The output of the matrix by rows
+Size of matrix is 2
+Matrix:
+42 0 
+0 72 

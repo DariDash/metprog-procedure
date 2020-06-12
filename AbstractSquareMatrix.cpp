@@ -20,7 +20,6 @@ void read_matrix_from_file(AbstractSquareMatrix *matrix, ifstream *fin) {
     string type_matrix;
     *fin >> type_matrix;  // Тип матрицы
 
-
     string type_print;
     *fin >> type_print;
 

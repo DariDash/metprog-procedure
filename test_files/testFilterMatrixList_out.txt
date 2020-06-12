@@ -1,0 +1,16 @@
+Number of matrices is 2
+
+Diagonal matrix
+The output of the matrix by rows
+Size of matrix is 2
+Matrix:
+42 0 
+0 72 
+
+Diagonal matrix
+The output of the matrix by rows
+Size of matrix is 3
+Matrix:
+1 0 0 
+0 4 0 
+0 0 7 
