@@ -67,6 +67,53 @@ bool write_matrices_to_file(MatrixList *matrix_list, string filename) {
         current_film_item = current_film_item->next_matrix;
     }
 
+    multimethod(matrix_list, &fout);
+
     fout.close();
     return true;
+}
+
+void multimethod(MatrixList *matrix_list, ofstream *fout) {
+    *fout << endl << endl << "Multimethod" << endl;
+    if (!matrix_list->size) {
+        return;
+    }
+
+    for(MatrixItem* matrix_item1 = matrix_list->first_matrix; matrix_item1->next_matrix; matrix_item1 = matrix_item1->next_matrix) {
+        for(MatrixItem* matrix_item2 = matrix_item1->next_matrix; matrix_item2; matrix_item2 = matrix_item2->next_matrix) {
+            switch (matrix_item1->matrix->type_matrix)
+            {
+                case typeMatrix::DIAGONAL:
+                    switch (matrix_item2->matrix->type_matrix) {
+                        case typeMatrix::DIAGONAL:
+                            *fout << "DIAGONAL and DIAGONAL" << endl;
+                            break;
+                        case typeMatrix::SQUARE:
+                            *fout << "DIAGONAL and SQUARE" << endl;
+                            break;
+                        default:
+                            *fout << "DIAGONAL and unknown type of matrix" << endl;
+                            break;
+                    }
+                    break;
+
+                case typeMatrix::SQUARE:
+                    switch (matrix_item2->matrix->type_matrix) {
+                        case typeMatrix::DIAGONAL:
+                            *fout << "SQUARE and DIAGONAL" << endl;
+                            break;
+                        case typeMatrix::SQUARE:
+                            *fout << "SQUARE and SQUARE" << endl;
+                            break;
+                        default:
+                            *fout << "SQUARE and unknown type of matrix" << endl;
+                            break;
+                    }
+                    break;
+                default:
+                    *fout << "Unknown type of matrix" << endl;
+                    break;
+            }
+        }
+    }
 }
