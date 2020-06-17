@@ -30,12 +30,12 @@ void add_matrix(MatrixList *matrix_list, AbstractSquareMatrix *matrix) {
     matrix_list->size++;
 }
 
-bool read_matrices_from_file(MatrixList *matrix_list, string filename) {
+void read_matrices_from_file(MatrixList *matrix_list, string filename) {
 
     ifstream fin(filename);
 
     if (!fin.is_open()) {
-        return false;
+        throw "Failed to open file for reading";
     }
 
     bool do_sort = false;
@@ -48,7 +48,7 @@ bool read_matrices_from_file(MatrixList *matrix_list, string filename) {
     if (sort == "Sort") {
         do_sort = true;
     } else if (sort != "NoSort") {
-        return false;
+        throw "Invalid values for the sort field in the input file";
     }
 
     fin >> filter;
@@ -67,17 +67,20 @@ bool read_matrices_from_file(MatrixList *matrix_list, string filename) {
     }
 
     fin.close();
-    return true;
 }
 
-bool write_matrices_to_file(MatrixList *matrix_list, string filename) {
+void write_matrices_to_file(MatrixList *matrix_list, string filename) {
     ofstream fout(filename);
+
+    if (!fout.is_open()) {
+        throw "Failed to open file for writing";
+    }
 
     fout << "Number of matrices is " << matrix_list->size << endl; // Вывод размера списка в файл
 
     if (!matrix_list->size) {
         fout.close();
-        return true;
+        return;
     }
 
     MatrixItem *current_film_item = matrix_list->first_matrix;
@@ -88,7 +91,6 @@ bool write_matrices_to_file(MatrixList *matrix_list, string filename) {
     }
 
     fout.close();
-    return true;
 }
 
 void sort_list(MatrixList *matrix_list) {

@@ -42,6 +42,9 @@ void read_matrix_from_file(AbstractSquareMatrix *matrix, ifstream *fin) {
     } else if (type_matrix == "LowerTriangular") {
         matrix->type_matrix = typeMatrix::LOWER_TRIANGULAR;
         read_matrix_from_file(&matrix->lower_triangular_matrix, matrix->size, fin);
+    } else {
+        fin->close();
+        throw "Unrecognized matrix type";
     }
 }
 
